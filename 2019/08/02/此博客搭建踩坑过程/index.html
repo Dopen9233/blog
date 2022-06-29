@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="非正常人类研究中心">
+
+
+
+<title>此博客搭建踩坑过程 | Dopen&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">非正常人类研究中心</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">博客</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">非正常人类研究中心</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">博客</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">展开全部</a>
+        <a onclick="go_top()">返回顶部</a>
+        <a onclick="go_bottom()">跳转末尾</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "折叠全部"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "展开全部"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">此博客搭建踩坑过程</h1>
+            
+                <div class="post-meta">
+                    
+                        作者: <a itemprop="author" rel="author" href="/">Dopen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        日期: <a href="#">八月 2, 2019&nbsp;&nbsp;14:04:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/杂玩与花活/">杂玩与花活</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="此博客搭建踩坑过程"><a href="#此博客搭建踩坑过程" class="headerlink" title="此博客搭建踩坑过程"></a>此博客搭建踩坑过程</h1><p>事出有因，牵一发而动全身。</p>
+<p>炎炎夏日，即便是西湖的水也压不住杭州人民的汗蒸活动。</p>
+<p>作为一个快乐的死宅狗，这种天气鼓捣技术最好玩了，于是剁了个NAS，花了一周时间装了个黑群辉与群辉软件。</p>
+<p>有了机箱，便想要公网服务，但公寓网络受限，无法进行DDNS解析。</p>
+<p>故买了个百度云主机（原来的到期了），部署了FRP服务，并给群辉装了个自运行FRPC脚本。然后域名无法解析新BCC主机。</p>
+<p>于是，进行备案。根据工信部要求，部署一个网站吧。</p>
+<p>一个月的审核后结果下来了。折在终审了，原因为<code>意图不明显</code></p>
+<p>于是乎决定：部属个博客吧！</p>
+<p>那么，大致方案有这么几个</p>
+<ul>
+<li>Jekyll</li>
+<li>Hexo</li>
+<li>Ghost</li>
+<li>WordPress</li>
+</ul>
+<p>分别简单介绍下</p>
+<h2 id="搭建方案分析"><a href="#搭建方案分析" class="headerlink" title="搭建方案分析"></a>搭建方案分析</h2><h3 id="Jekyll"><a href="#Jekyll" class="headerlink" title="Jekyll"></a>Jekyll</h3><p>官网：<a href="https://www.jekyll.com.cn" target="_blank" rel="noopener">https://www.jekyll.com.cn</a></p>
+<p>使用<code>ruby</code>语言开发的博客工具，用于根据MD文档生成静态页面，将静态页面推送至服务器。</p>
+<h3 id="Ghost"><a href="#Ghost" class="headerlink" title="Ghost"></a>Ghost</h3><p>官网：<a href="http://www.ghostchina.com" target="_blank" rel="noopener">http://www.ghostchina.com</a></p>
+<p>使用<code>nodejs</code>语言开发的博客工具，用于根据MD文档生成静态页面，将静态页面推送至服务器。目前国内不再发展。不是很推荐。</p>
+<h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p>官网：<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">https://hexo.io/zh-cn/</a></p>
+<p>由台湾同胞开发，对中文支持比较友好。</p>
+<p>使用<code>nodejs</code>语言开发的博客工具，可以作为动态<code>Server</code>，也可以生成静态<code>Html</code>。</p>
+<h3 id="WordPress"><a href="#WordPress" class="headerlink" title="WordPress"></a>WordPress</h3><p>官网：<a href="https://cn.wordpress.org" target="_blank" rel="noopener">https://cn.wordpress.org</a></p>
+<p>使用<code>PHP</code>语言开发的建站工具，功能强大，即臃肿，使用用户群体最大，相关资料较多，可更换主题，插件等。</p>
+<p>那么我选择的是<code>Hexo</code>+<code>码云</code>，<code>WordPress</code>在研究，折在网络环境上了。以后有机会换博客时再研究。</p>
+<hr>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h4 id="1-安装环境"><a href="#1-安装环境" class="headerlink" title="1. 安装环境"></a>1. 安装环境</h4><h5 id="Node-js-npm-本文不详细阐述"><a href="#Node-js-npm-本文不详细阐述" class="headerlink" title="Node.js - npm(本文不详细阐述)"></a>Node.js - npm(本文不详细阐述)</h5><h5 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#安装</span><br><span class="line">npm install hexo-cli -g </span><br><span class="line">#查看版本</span><br><span class="line">hexo -v</span><br><span class="line">#创建博客路径 </span><br><span class="line">hexo init myblog</span><br><span class="line"></span><br><span class="line">#路径说明</span><br><span class="line">|-node_modules: 依赖包（初始化没有）</span><br><span class="line">|-public：存放生成的页面（初始化没有）</span><br><span class="line">|-scaffolds：生成文章的一些模板</span><br><span class="line">|-source：</span><br><span class="line">   -- _port : 存放你的博客文章</span><br><span class="line">|-themes：主题</span><br><span class="line">|-** _config.yml: 博客的配置文件**</span><br><span class="line"></span><br><span class="line">#进入博客路径</span><br><span class="line">npm install #安装依赖   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#启动服务测试</span><br><span class="line">hexo g</span><br><span class="line">hexo server</span><br><span class="line"></span><br><span class="line">访问 localhost:4000</span><br><span class="line">ctrl+c关闭</span><br><span class="line">#安装git提交插件，在博客路径进行安装（相当于构建本地仓）</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#清除了你之前生成的东西</span><br><span class="line">hexo clean</span><br><span class="line">#生成静态文章 用 hexo g缩写，生成至public文件夹</span><br><span class="line">hexo generate</span><br><span class="line"></span><br><span class="line">#在_config.yml文件中修改部署信息，注意`:`后有个空格</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://gitee.com/Dopen9233/dopen9233</span><br><span class="line">  branch: master #可省略</span><br><span class="line">  message:init #提交信息</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#部署文章，可以用hexo d缩写</span><br><span class="line">hexo deploy</span><br><span class="line">#若部署失败</span><br><span class="line">npm install hexo --save</span><br><span class="line"></span><br><span class="line">git config --global user.name空格+你的码云的名字</span><br><span class="line">git config --global user.email空格+你的码云的邮箱</span><br><span class="line"></span><br><span class="line"># 提交后在仓库上方选择服务-&gt; gitee pages</span><br><span class="line">根据提示创建站点。个人建议仓库名称与用户名一致</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置文件这里不再阐述，提供<a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">官网API</a></strong></p>
+<h4 id="出现隔离路径，样式丢失问题的两个解决方案"><a href="#出现隔离路径，样式丢失问题的两个解决方案" class="headerlink" title="出现隔离路径，样式丢失问题的两个解决方案:"></a>出现隔离路径，样式丢失问题的两个解决方案:</h4><ol>
+<li>将码云仓库与用户名一致</li>
+<li>修改<code>_config.yml</code>，<code>root: /</code>为 <code>root: /隔离路径/</code>。</li>
+</ol>
+<hr>
+<p>而我没有使用<code>hexo deploy</code>,而是将整个项目都推送至码云。以便以后换机器编写部署环境。</p>
+<hr>
+<h4 id="git工具选择："><a href="#git工具选择：" class="headerlink" title="git工具选择："></a>git工具选择：</h4><ul>
+<li>git（自行度娘）</li>
+</ul>
+<ul>
+<li><a href="https://tortoisegit.org" target="_blank" rel="noopener">TortoiseGit</a>与TortoiseGit中文包</li>
+</ul>
+<p>环境搭建参考：</p>
+<p><a href="https://blog.csdn.net/sinat_37781304/article/details/82729029" target="_blank" rel="noopener">https://blog.csdn.net/sinat_37781304/article/details/82729029</a></p>
+<p><a href="https://blog.csdn.net/qq_36254947/article/details/85918383" target="_blank" rel="noopener">https://blog.csdn.net/qq_36254947/article/details/85918383</a></p>
+<p><a href="https://www.jianshu.com/p/13f5e4d7099d" target="_blank" rel="noopener">https://www.jianshu.com/p/13f5e4d7099d</a></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>作者: </span>
+                        <span>Dopen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>链接:</span>
+                        <span><a href="http://www.dopen.top/2019/08/02/此博客搭建踩坑过程/">http://www.dopen.top/2019/08/02/此博客搭建踩坑过程/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>标签: </span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/杂谈/"># 杂谈</a> &nbsp;
+                    
+                        <a href="/tags/博客/"># 博客</a> &nbsp;
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">返回</a>
+                <span>· </span>
+                <a href="/">主页</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/08/02/自定义注解/">自定义注解</a>
+            
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dopen | <a href="http://www.beian.miit.gov.cn" target="_blank" title="工信部">备案号：蒙ICP备20003008号-1</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

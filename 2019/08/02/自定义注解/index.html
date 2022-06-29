@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="description" content="非正常人类研究中心">
+
+
+
+<title>自定义注解 | Dopen&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">非正常人类研究中心</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">博客</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">非正常人类研究中心</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">博客</a>
+                
+                    <a class="menu-item" href="/category">分类</a>
+                
+                    <a class="menu-item" href="/tag">标签</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">展开全部</a>
+        <a onclick="go_top()">返回顶部</a>
+        <a onclick="go_bottom()">跳转末尾</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "折叠全部"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "展开全部"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">自定义注解</h1>
+            
+                <div class="post-meta">
+                    
+                        作者: <a itemprop="author" rel="author" href="/">Dopen</a>
+                    
+
+                    
+                        <span class="post-time">
+                        日期: <a href="#">八月 2, 2019&nbsp;&nbsp;14:53:00</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="一-注解基本知识"><a href="#一-注解基本知识" class="headerlink" title="一. 注解基本知识"></a>一. 注解基本知识</h1><h2 id="1-注解数据类型"><a href="#1-注解数据类型" class="headerlink" title="1. 注解数据类型"></a>1. 注解数据类型</h2><p>注解是写在.java文件中，使用@interface作为关键字, 所以注解也是Java的一种数据类型，从广泛的定义来说，Class、Interface、Enum、Annotation都属于Class类型。</p>
+<h2 id="2-元注解"><a href="#2-元注解" class="headerlink" title="2. 元注解"></a>2. 元注解</h2><p>在创建注解的时候，需要使用一些注解来描述自己创建的注解，就是写在@interface上面的那些注解，这些注解被称为元注解，如在Override中看到的@Target、@Retention等。下面列出一些元注解</p>
+<blockquote>
+<p>元注解，说白了，就是JDK自带的注解，这些注解是干嘛的呢？其实就是在我们自定义注解时，注解到我们自定义的注解上的</p>
+</blockquote>
+<h3 id="Documented"><a href="#Documented" class="headerlink" title="@Documented"></a>@Documented</h3><p>用于标记在生成javadoc时是否将注解包含进去，可以看到这个注解和@Override一样，注解中空空如也，什么东西都没有</p>
+<h5 id="Documented-java"><a href="#Documented-java" class="headerlink" title="Documented.java"></a>Documented.java</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.ANNOTATION_TYPE)</span><br><span class="line">public @interface  &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h3><p>用于定义注解可以在什么地方使用，默认可以在任何地方使用，也可以指定使用的范围，开发中将注解用在类上(如@Controller)、字段上(如@Autowire)、方法上(如@RequestMapping)、方法的参数上(如@RequestParam)等比较常见。</p>
+<ul>
+<li>TYPE : 类、接口或enum声明</li>
+<li>FIELD: 域(属性)声明</li>
+<li>METHOD: 方法声明</li>
+<li>PARAMETER: 参数声明</li>
+<li>CONSTRUCTOR: 构造方法声明</li>
+<li>LOCAL_VARIABLE:局部变量声明</li>
+<li>ANNOTATION_TYPE:注释类型声明</li>
+<li>PACKAGE: 包声明</li>
+</ul>
+<h5 id="Target-java"><a href="#Target-java" class="headerlink" title="Target.java"></a>Target.java</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.ANNOTATION_TYPE)</span><br><span class="line">public @interface Target &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Returns an array of the kinds of elements an annotation type</span><br><span class="line">     * can be applied to.(返回可以应用注释类型的元素类型的数组)</span><br><span class="line">     </span><br><span class="line">     * @return an array of the kinds of elements an annotation type</span><br><span class="line">     * can be applied to(返回可以应用注释类型的元素类型的数组)</span><br><span class="line">     */</span><br><span class="line">    ElementType[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public enum ElementType &#123;</span><br><span class="line">    /** Class, interface (including annotation type), or enum declaration</span><br><span class="line">      * 类、接口(包括注释类型)或枚举声明</span><br><span class="line">      */</span><br><span class="line">    TYPE,</span><br><span class="line"></span><br><span class="line">    /** Field declaration (includes enum constants) */</span><br><span class="line">    /** 字段声明(包括枚举常量) */</span><br><span class="line">    FIELD,</span><br><span class="line"></span><br><span class="line">    /** Method declaration */</span><br><span class="line">    /** 方法声明 */</span><br><span class="line">    METHOD,</span><br><span class="line"></span><br><span class="line">    /** Formal parameter declaration */</span><br><span class="line">    /** 入参声明 */</span><br><span class="line">    PARAMETER,</span><br><span class="line"></span><br><span class="line">    /** Constructor declaration */</span><br><span class="line">    /** 构造器声明 */</span><br><span class="line">    CONSTRUCTOR,</span><br><span class="line"></span><br><span class="line">    /** Local variable declaration */</span><br><span class="line">    /** 局部变量声明 */</span><br><span class="line">    LOCAL_VARIABLE,</span><br><span class="line"></span><br><span class="line">    /** Annotation type declaration */</span><br><span class="line">    /** 注解声明 */</span><br><span class="line">    ANNOTATION_TYPE,</span><br><span class="line"></span><br><span class="line">    /** Package declaration */</span><br><span class="line">    /** 包声明 */</span><br><span class="line">    PACKAGE,</span><br><span class="line"></span><br><span class="line">    /** Type parameter declaration */</span><br><span class="line">    /** 参数类型声明 */</span><br><span class="line">    TYPE_PARAMETER,</span><br><span class="line"></span><br><span class="line">    /** Use of a type */</span><br><span class="line">    /** 类型的使用 */</span><br><span class="line">    TYPE_USE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h3><p>允许子类继承父类中的注解，可以通过反射获取到父类的注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.ANNOTATION_TYPE)</span><br><span class="line">public @interface Inherited &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Constraint"><a href="#Constraint" class="headerlink" title="@Constraint"></a>@Constraint</h3><p>用于校验属性值是否合法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Target(&#123;ElementType.ANNOTATION_TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface Constraint &#123;</span><br><span class="line">    Class&lt;? extends ConstraintValidator&lt;?, ?&gt;&gt;[] validatedBy();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Retention"><a href="#Retention" class="headerlink" title="@Retention"></a>@Retention</h3><p>注解的生命周期，用于定义注解的存活阶段，可以存活在源码级别、编译级别(字节码级别)、运行时级别</p>
+<blockquote>
+<p>Annotation被保留的时间有长短：某些Annotation仅出现在源代码中，而被编译器丢弃；而另一些却被编译在class文件中；编译在class文件中的Annotation可能会被虚拟机忽略，而另一些在class被装载时将被读取（请注意并不影响class的执行，因为Annotation与class在使用上是被分离的）</p>
+<ul>
+<li>SOURCE：源码级别，注解只存在源码中，一般用于和编译器交互，用于检测代码。如@Override, @SuppressWarings。</li>
+<li>CLASS：字节码级别，注解存在于源码和字节码文件中，主要用于编译时生成额外的文件，如XML，Java文件等，但运行时无法获得。 如mybatis生成实体和映射文件，这个级别需要添加JVM加载时候的代理（javaagent），使用代理来动态修改字节码文件。</li>
+<li>RUNTIME：运行时级别，注解存在于源码、字节码、java虚拟机中，主要用于运行时，可以使用反射获取相关的信息。</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(ElementType.ANNOTATION_TYPE)</span><br><span class="line">public @interface Retention &#123;</span><br><span class="line">    /**</span><br><span class="line">     * Returns the retention policy.</span><br><span class="line">     * @return the retention policy</span><br><span class="line">     * 返回保留策略</span><br><span class="line">     */</span><br><span class="line">    RetentionPolicy value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-注解的内容"><a href="#3-注解的内容" class="headerlink" title="3. 注解的内容"></a>3. 注解的内容</h2><p>在上面的注解源码中可以看到有的注解中没有任何内容，有的注解的有内容，看似像方法。</p>
+<p>注解的内容的语法格式： 数据类型 属性名() default 默认值，数据类型用于描述属性的数据类型，默认值是说当没有给属性赋值时使用默认值，一般String使用空字符串”“作为默认值，数组一般使用空数组{ }作为默认值.</p>
+<p>下面看一下SpringMVC中的RequestMapping的注解的声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Mapping</span><br><span class="line">public @interface RequestMapping &#123;</span><br><span class="line">    String name() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">    @AliasFor(&quot;path&quot;)</span><br><span class="line">    String[] value() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    @AliasFor(&quot;value&quot;)</span><br><span class="line">    String[] path() default &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    RequestMethod[] method() default &#123;&#125;;</span><br><span class="line">    String[] params() default &#123;&#125;;</span><br><span class="line">    String[] headers() default &#123;&#125;;</span><br><span class="line">    String[] consumes() default &#123;&#125;;</span><br><span class="line">    String[] produces() default &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用SpringMVC中的RequestMapping注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &quot;/list&quot;, </span><br><span class="line">                method = RequestMethod.POST, </span><br><span class="line">                produces = &#123;&quot;application/json;charset=UTF-8;&quot;&#125;)</span><br><span class="line">public String list()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-注解的使用场景"><a href="#4-注解的使用场景" class="headerlink" title="4. 注解的使用场景"></a>4. 注解的使用场景</h2><p>可以通过注解的声明周期来分析注解的使用场景：</p>
+<ul>
+<li>SOURCE源码级别：给编译器使用，如@Override、@Deprecated 等， 这部分开发者应该使用的场景不多</li>
+<li>CLASS：字节码级别，这部分也很少见到</li>
+<li>RUNTIME：运行时级别，这个是最多的，几乎开发者使用到的注解都是运行时级别，运行时注解常用的有以下几种情况 <ul>
+<li>注解中没有任何属性的，空的注解，这部分注解通常起到一个标注的作用，如@Test、@Before、@After，通过获取这些标记注解在逻辑上做一些特殊的处理</li>
+<li>可以使用约束注解@Constraint来对属性值进行校验，如@Email, @NotNull等</li>
+<li>可以通过在注解中使用属性来配置一些参数，然后可以使用反射获取这些参数，这些注解没有其他特殊的功能，只是简单的代替xml配置的方式来配置一些参数。使用注解来配置参数这在Spring boot中得到了热捧，如@Configuration</li>
+</ul>
+</li>
+</ul>
+<p>关于配置方式xml vs annotation, 一般使用xml配置一些和业务关系不太紧密的配置，使用注解配置一些和业务密切相关的参数。</p>
+<h1 id="二-注解和反射基本API"><a href="#二-注解和反射基本API" class="headerlink" title="二. 注解和反射基本API"></a>二. 注解和反射基本API</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 获取某个类型的注解</span><br><span class="line">public &lt;A extends Annotation&gt; A getAnnotation(Class&lt;A&gt; annotationClass);</span><br><span class="line">// 获取所有注解(包括父类中被Inherited修饰的注解)</span><br><span class="line">public Annotation[] getAnnotations(); </span><br><span class="line">// 获取声明的注解(但是不包括父类中被Inherited修饰的注解)</span><br><span class="line">public Annotation[] getDeclaredAnnotations();</span><br><span class="line">// 判断某个对象上是否被某个注解进行标注</span><br><span class="line">public boolean isAnnotationPresent(Class&lt;? extends Annotation&gt; annotationClass)</span><br><span class="line"></span><br><span class="line">// 获取某个类声明的所有字段</span><br><span class="line">public Field[] getDeclaredFields() throws SecurityException;</span><br><span class="line">// 获取某个方法</span><br><span class="line">public Method getMethod(String name, Class&lt;?&gt;... parameterTypes);</span><br></pre></td></tr></table></figure>
+
+<h1 id="三-自定义注解"><a href="#三-自定义注解" class="headerlink" title="三. 自定义注解"></a>三. 自定义注解</h1><p>使用自定义注解+拦截器或者是AOP等可以进行权限的控制。</p>
+<p>下面通过定义一个注解用来限制当用户访问接口时必须要登录的示例</p>
+<p>步骤一：定义注解<br>RequiresLogin.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Documented</span><br><span class="line">@Target(&#123;ElementType.METHOD&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">public @interface RequiresLogin &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤二：使用注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line">    @RequiresLogin</span><br><span class="line">    @RequestMapping(value = &quot;/list&quot;, produces = &#123;&quot;application/json;charset=UTF-8;&quot;&#125;)</span><br><span class="line">    public String getUserList()&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(&quot;--------------&quot;);</span><br><span class="line">        return &quot;[&#123;&apos;id&apos;: 1, &apos;username&apos;:&apos;zhangsan&apos;&#125;]&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤三：使用AOP进行拦截，解析注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public class LoginAdvices &#123;</span><br><span class="line">    public void before(JoinPoint joinPoint) throws Exception&#123;</span><br><span class="line"></span><br><span class="line">        Object target = joinPoint.getTarget();</span><br><span class="line">        String methodName = joinPoint.getSignature().getName();</span><br><span class="line"></span><br><span class="line">        System.out.println(target + &quot;-------&quot; + methodName);</span><br><span class="line">        Method method = target.getClass().getMethod(methodName);</span><br><span class="line">        boolean annotationPresent = method.isAnnotationPresent(RequiresLogin.class);</span><br><span class="line">        if (annotationPresent) &#123;</span><br><span class="line">            // 用户必须登录</span><br><span class="line">            boolean isLogin = false;</span><br><span class="line">            if (!isLogin) &#123;</span><br><span class="line">                throw new Exception(&quot;访问该接口必须先登录&quot;);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                System.out.println(&quot;已登录...&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在applicationContext.xml中配置aop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;loginAdvices&quot; class=&quot;com.mengdee.manager.aop.LoginAdvices&quot;/&gt;</span><br><span class="line">    &lt;!-- aop配置 --&gt;</span><br><span class="line">    &lt;aop:config proxy-target-class=&quot;true&quot;&gt;</span><br><span class="line">        &lt;!--切面 --&gt;</span><br><span class="line">        &lt;aop:aspect ref=&quot;loginAdvices&quot;&gt;</span><br><span class="line">            &lt;!-- 切点 --&gt;</span><br><span class="line">            &lt;aop:pointcut id=&quot;pointcut1&quot; expression=&quot;execution(* com.mengdee.manager.controller.*.*(..))&quot;/&gt;</span><br><span class="line">            &lt;!--连接通知方法与切点 --&gt;</span><br><span class="line">            &lt;aop:before method=&quot;before&quot; pointcut-ref=&quot;pointcut1&quot;/&gt;</span><br><span class="line">        &lt;/aop:aspect&gt;</span><br><span class="line">    &lt;/aop:config&gt;</span><br></pre></td></tr></table></figure>
+
+<p>关于如何自定义注解对属性值的合法性进行校验，请移步<a href="http://blog.csdn.net/vbirdbest/article/details/72620957" target="_blank" rel="noopener">http://blog.csdn.net/vbirdbest/article/details/72620957</a> 这里有完整的示例</p>
+<hr>
+<h1 id="四-自定义异常"><a href="#四-自定义异常" class="headerlink" title="四. 自定义异常"></a>四. 自定义异常</h1><p>为什么要自定义异常<br>Java虽然提供了丰富的异常处理类，但是在项目中还会经常使用自定义异常，其主要原因是Java提供的异常类在某些情况下还是不能满足各种业务的需求。 例如系统中有些错误是符合Java语法，但不符合业务逻辑。如当用户登录时账号不存在或者账号已锁定可以自定义一个账号异常AccountException。<br>或者有些情况下Java的同一个异常可能会有多种原因引起，在排查问题时不容易定位错误，此时可以使用自定义一个更加明确的异常。</p>
+<ul>
+<li>自定义异常的好处：自定义异常可以使异常更加明确，可以隐藏底层的异常，这样更安全，异常信息更加直观。</li>
+<li>自定义异常的使用：自定义异常一般继承自Exception或者RuntimeException，根据业务需要可以带一些属性作为构造函数的参数，自定义异常需要程序员手动抛出异常，并处理异常。</li>
+</ul>
+<p>下面是Apache Shiro中自定义异常的示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class ShiroException extends RuntimeException &#123;</span><br><span class="line">    public ShiroException() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ShiroException(String message) &#123;</span><br><span class="line">        super(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ShiroException(Throwable cause) &#123;</span><br><span class="line">        super(cause);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ShiroException(String message, Throwable cause) &#123;</span><br><span class="line">        super(message, cause);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>作者: </span>
+                        <span>Dopen</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>链接:</span>
+                        <span><a href="http://www.dopen.top/2019/08/02/自定义注解/">http://www.dopen.top/2019/08/02/自定义注解/</a></span>
+                    </p>
+                
+                
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>标签: </span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/注解/"># 注解</a> &nbsp;
+                    
+                        <a href="/tags/Spring/"># Spring</a> &nbsp;
+                    
+                        <a href="/tags/反射/"># 反射</a> &nbsp;
+                    
+                        <a href="/tags/Java/"># Java</a> &nbsp;
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">返回</a>
+                <span>· </span>
+                <a href="/">主页</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2019/08/02/此博客搭建踩坑过程/">此博客搭建踩坑过程</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Dopen | <a href="http://www.beian.miit.gov.cn" target="_blank" title="工信部">备案号：蒙ICP备20003008号-1</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
